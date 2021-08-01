@@ -1,0 +1,66 @@
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora étto Propaganda</title> <!--Título-->
+    <style>
+        body {
+            color: rgb(0, 0, 0);
+            font: normal 25pt;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }   
+        h1 {
+            color:rgb(0, 0, 0)
+        } 
+        h1 {
+            font-size: 40px;
+        }   
+        h2 {
+            color: rgb(0, 0, 0);
+        }
+        input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  }
+h3 {
+  color: rgb(0, 0, 0);
+}
+    input[type='text'] { 
+        font-size: 24px;
+        text-align: center;
+        
+    }
+    </style>
+    <script type="text/javascript">
+        valorpormetro=70.00;
+        function calcula(){
+            var l=parseFloat(document.getElementById('largura').value.replace(/,/g,"."))||0,
+            a=parseFloat(document.getElementById('altura').value.replace(/,/g,"."))||0,
+            valor=Math.round(l*a*valorpormetro*100)+'';
+            valorformatado=valor.replace(/(\d{2})$/,",$1"),
+            i=valorformatado.length-6;
+            while(i>0){
+                valorformatado=valorformatado.substr(0,i)+'.'+valorformatado.substring(i,valorformatado.length);
+                i-=3;
+            }
+            if(valor=='0')valorformatado='00,00';
+            document.getElementById('mostra').innerHTML="Total: "+Math.round(l*a*10000)/10000+"m² - R$ "+valorformatado;
+        }
+        </script>
+</head>
+<body>
+    <center>
+    <form id="teste" name="teste" action="teste.php" method="post"><p class="p3">
+    <b>Largura: <input type="text" id="largura" name="largura" onkeyup="calcula()" style="width:100px" /> 
+    Altura: <input type="text" id="altura" name="altura" onkeyup="calcula()" style="width:100px" /> </b>
+    <h2>Valor por Unidade</h2>
+       <h2><div id="mostra"></div></h2></p>
+    </form></center>
+</body>
+</html>
